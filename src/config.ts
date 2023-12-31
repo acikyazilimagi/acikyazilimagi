@@ -25,7 +25,7 @@ export const SITE = {
 	title: "AYA | Açık Yazılım Ağı",
 	description: "Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı",
 	url: "https://acikyazilimagi.com",
-	githubUrl: "https://github.com/acikyazilimagi/website",
+	githubUrl: "https://github.com/acikyazilimagi/acikyazilimagi",
 	image:
 		"https://raw.githubusercontent.com/one-aalam/astro-ink/main/public/astro-banner.png",
 	// YT video channel Id (used in media.astro)
