@@ -27,7 +27,7 @@ export const SITE = {
 	url: "https://acikyazilimagi.com",
 	githubUrl: "https://github.com/acikyazilimagi/acikyazilimagi",
 	image:
-		"https://raw.githubusercontent.com/one-aalam/astro-ink/main/public/astro-banner.png",
+		"https://acikyazilimagi.com/assets/logo.png",
 	// YT video channel Id (used in media.astro)
 	ytChannelId: "",
 	// Optional, user/author settings (example)
