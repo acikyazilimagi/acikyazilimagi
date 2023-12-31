@@ -1,0 +1,60 @@
+---
+export const prerender = true
+
+import { getCollection, getEntryBySlug } from 'astro:content'
+import DefaultPageLayout from '$/layouts/default.astro'
+import PostPreviewList from '$/components/PostPreviewList.astro'
+import Prose from '$/components/Prose.astro'
+
+const title = 'Giriş'
+const description = 'Astro-Ink is a crisp, minimal, personal blog theme for Astro'
+
+const posts = await getCollection('blog')
+---
+<DefaultPageLayout content={{ title, description }} showPageHeader={false}>
+    <div class="hero">
+        <div class="hero__face">
+            <div class="author-card">
+                <img src="/assets/logo.svg" title="Aalam" />
+            </div>
+        </div>
+        <div class="hero__says">
+            <Prose>
+                Açık Yazılım Ağı, toplum yararını gözeten yazılım çözümleri üretme motivasyonuyla bir araya gelmiş
+                gönüllülerin oluşturduğu bir yapıdır. Bizler uzmanı olduğumuz bilişim teknolojilerini ve açık kaynak
+                geliştirme pratiklerini kullanarak resmi kurumlar ve sivil toplum kuruluşları başta olmak üzere
+                herkesin erişimine açık, kolektif oluşturulan, üzerinde bir hak sahipliği bulunmayan yazılım
+                çözümleri geliştiriyoruz.
+            </Prose>
+            <p align="right">
+                <a class="action__go-to-blog ink-h" href="/about" title="Hakkımızda">Yazının Devamı &rarr;</a>
+            </p>
+        </div>
+    </div>
+    <hr/>
+    <PostPreviewList posts={posts.slice(0, 3)} heading="son yazılar"/>
+    <div class="page__actions">
+        <a class="action__go-to-blog ink-h" href="/blog" title="Tüm Yazılar">Tüm Yazılar &rarr;</a>
+    </div>
+</DefaultPageLayout>
+
+<style>
+    .hero {
+        @apply flex flex-col md:flex-row gap-8 w-full transition-all pb-10
+    }
+    .hero__face {
+        @apply flex md:flex-none justify-center
+    }
+    .hero__says {
+        @apply flex-1 text-center md:text-left
+    }
+    .author-card, .author-card img {
+        @apply h-48 w-48 md:h-56
+    }
+    .page__actions {
+        @apply flex justify-center md:justify-end py-6
+    }
+    .action__go-to-blog {
+        @apply py-4 hover:underline
+    }
+</style>

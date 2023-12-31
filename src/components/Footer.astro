@@ -1,0 +1,16 @@
+---
+    import { SITE } from '$/config'
+    import ModeLabel from './ModeLabel.svelte'
+
+    const year = new Date().getFullYear()
+---
+<footer class="footer">
+    <nav class="nav">
+        <div>&copy; { year } <a href={ SITE.url }>{ SITE.name }</a>
+    </nav>
+</footer>
+<style>
+    .footer {
+        @apply py-6 border-t
+    }
+</style>
