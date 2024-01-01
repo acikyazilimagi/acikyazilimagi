@@ -18,9 +18,7 @@ export const config = {
 			transform(parameters) {
 				const [country] = Object.values(parameters);
 				const countryToEmojiMap = {
-					japan: "🇯🇵",
-					spain: "🇪🇸",
-					france: "🇫🇷",
+					turkey: "🇹🇷",
 				};
 				return countryToEmojiMap[country as string] ?? "🏳";
 			},
