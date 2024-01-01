@@ -158,9 +158,12 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
         @apply flex-grow border-0 text-theme-accent-slate-dark
     }
     .subscription-form button, .button {
-        @apply px-4 py-2 uppercase font-bold text-white bg-gradient-to-tr from-theme-primary to-theme-dark-secondary dark:from-theme-dark-secondary dark:to-theme-primary
+        @apply pl-4 pr-6 py-3 font-semibold text-white bg-theme-primary dark:bg-theme-dark-primary
+    }
+    .subscription-form button svg, .button svg {
+        @apply mb-1
     }
     .author-card__follow-btn {
-        @apply rounded-md shadow-md shadow-theme-dark-secondary dark:shadow-theme-primary hover:shadow-theme-secondary hover:dark:shadow-theme-secondary hover:shadow-lg transition-all
+        @apply rounded-md transition-all
     }
 </style>
