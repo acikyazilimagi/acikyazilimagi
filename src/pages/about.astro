@@ -1,11 +1,13 @@
 ---
-title: 'Hakkında'
-description: 'Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı'
----
+export const prerender = true
+
 import DefaultPageLayout from '$/layouts/default.astro'
 import Prose from '$/components/Prose.astro'
 
-<DefaultPageLayout content={{ title: frontmatter.title, description: frontmatter.description }}>
+const title = 'Hakkında'
+const description = 'Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı'
+---
+<DefaultPageLayout content={{ title, description }} showPageHeader={false}>
     <Prose>
         **Açık Yazılım Ağı** (AYA), gönüllülerin toplum yararını gözeten yazılım tabanlı çözümler üretme
         motivasyonuyla bir araya gelip geliştirmiş oldukları yazılımları açık kaynak olarak yayınlandıkları
@@ -17,8 +19,17 @@ import Prose from '$/components/Prose.astro'
         hak sahipliği bulunmayan yazılım çözümleri oldular. Bizim buradaki rolümüz hem iletişime aracı olmak
         hem de kaynak yönetiminde koordinasyon sağlamak oldu.
 
-        {% yt url="https://www.youtube.com/embed/mktym-FxWvg" title="Yazılımcı Günleri 2023 | ESER ÖZVATAF - AÇIK YAZILIM AĞI VE AFET HARİTA PROJESİ" %}
-        {% /yt %}
+        <iframe
+            class="yt-iframe"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/mktym-FxWvg"
+            title="Yazılımcı Günleri 2023 | ESER ÖZVATAF - AÇIK YAZILIM AĞI VE AFET HARİTA PROJESİ"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+        >
+        </iframe>
 
         ## Geçmiş
 
@@ -91,3 +102,9 @@ import Prose from '$/components/Prose.astro'
         tanımlamak mümkündür.
     </Prose>
 </DefaultPageLayout>
+
+<style>
+  .yt-iframe {
+    @apply w-full aspect-[16/9]
+  }
+</style>
