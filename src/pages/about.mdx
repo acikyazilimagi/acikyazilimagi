@@ -1,13 +1,11 @@
 ---
-export const prerender = true
-
+title: 'Hakkında'
+description: 'Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı'
+---
 import DefaultPageLayout from '$/layouts/default.astro'
 import Prose from '$/components/Prose.astro'
 
-const title = 'Hakkında'
-const description = 'Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı'
----
-<DefaultPageLayout content={{ title, description }} showPageHeader={false}>
+<DefaultPageLayout content={{ title: frontmatter.title, description: frontmatter.description }}>
     <Prose>
         **Açık Yazılım Ağı** (AYA), gönüllülerin toplum yararını gözeten yazılım tabanlı çözümler üretme
         motivasyonuyla bir araya gelip geliştirmiş oldukları yazılımları açık kaynak olarak yayınlandıkları
@@ -30,6 +28,7 @@ const description = 'Gönüllü geliştirilen yazılımlarla oluşan bir yazıl�
             allowfullscreen
         >
         </iframe>
+
 
         ## Geçmiş
 
