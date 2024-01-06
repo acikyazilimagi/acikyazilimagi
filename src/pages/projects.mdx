@@ -1,0 +1,52 @@
+---
+title: 'Projelerimiz'
+description: 'Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı'
+---
+import DefaultPageLayout from '$/layouts/default.astro'
+import Prose from '$/components/prose.astro'
+
+<DefaultPageLayout content={{ title: frontmatter.title, description: frontmatter.description }}>
+    <Prose>
+        ## afet.org
+
+        **Açıklama:** Herhangi bir afet öncesi ve afet esnasında kullanılmak üzere projelendirilen bir afet yönetim sistemi.
+
+        **Amaç:** Afetle ilgili olarak sosyal medya ve internet üzerinde oluşan kirliliği azaltarak rafine hale getirmek, akredite
+        organizasyonlara rafine bilgi sağlamak.
+
+        **Kullanıcılar:** Afet yönetim merkezleri, afet yönetim merkezlerine bağlı kurumlar, sivil toplum kuruluşları ve vatandaşlar.
+
+        **Kapsam:**
+        - Afet öncesi
+            - Afet öncesi hazırlık
+            - Afet öncesi eğitim
+            - Afet öncesi planlama
+        - Afet esnasında
+            - İhtiyaçların bildirimi
+            - Olayların bildirimi
+            - Yönlendirmeler
+            - Bilgi paylaşımı
+            - İhtiyaçların toplanması
+
+
+        ## gonullu.io
+
+        **Açıklama:** Dernek, vakıf, kullanıcı grubu vb. organizasyon etkinlikleri ve çalışmalarının koordinasyonunda kullanılmak üzere
+        projelendirilen bir gönüllü yönetim sistemi.
+
+        **Amaç:** Gönüllülük içeren organizasyonlarda kişilerin gönüllü olma süreçlerini kolaylaştırmak; gönüllülerin görev atamaları,
+        bilgilerinin tutulması, takibi ve eğitimlerini sağlamak için organizasyonlara yazılım desteği sağlamak.
+
+        **Kullanıcılar:** Gönüllü yönetimi yapan kurum, kuruluş, dernek ve vakıflar.
+
+
+        ## kayit.io
+
+        **Açıklama:** Organizasyonların birbirleri arasında veri takası yapabilmesi için projelendirilen bir kayıt yönetim sistemi.
+
+        **Amaç:** Organizasyonların birbirleri ile güvenli veri kanalı oluşturarak acil ve özel durumlarda veya rutin olarak; kişilere ve
+        akışlara bağlı kalmaksızın veri sağlayıcılar ile veri kullanıcılarına bir platform sağlamak.
+
+        **Kullanıcılar:** Veri sağlayan ve kullanan her türlü kişi ve kuruluş.
+    </Prose>
+</DefaultPageLayout>

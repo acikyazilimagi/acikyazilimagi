@@ -18,7 +18,8 @@
         "$": ["./src"]
       },
       "types": ["astro/env"],
-      "strictNullChecks": true
+      "strict": true
     },
     "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts"],
+    "exclude": ["node_modules"]
 }

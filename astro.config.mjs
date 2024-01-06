@@ -31,12 +31,12 @@ export default defineConfig( /** @type {import('astro').AstroUserConfig} */{
     ]
   },
   integrations: [
-    mdx(), 
+    mdx(),
     markdoc(),
-    svelte(), 
+    svelte(),
     tailwind({
       applyBaseStyles: false,
-    }), 
+    }),
     sitemap(),
   ],
   vite: {

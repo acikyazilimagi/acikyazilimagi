@@ -1,8 +1,8 @@
 import { component } from "@astrojs/markdoc/config";
 
-/** @type {import('@markdoc/markdoc').Schema} */
+// ** @type {import('@markdoc/markdoc').Schema} */
 export const tabs = {
-	render: component("./src/components/mdoc/Tabs/Tabs.astro"),
+	render: component("./src/components/mdoc/tabs/tabs.astro"),
 	children: ["paragraph", "tag", "list"],
 	attributes: {
 		tabs: {

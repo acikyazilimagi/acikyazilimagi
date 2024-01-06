@@ -1,7 +1,33 @@
 {
-  "name": "astro-ink",
-  "version": "2.0.0",
+  "name": "acikyazilimagi",
   "private": true,
+  "description": "Açık Yazılım Ağı web sitesi",
+  "keywords": [
+    "açık",
+    "yazılım",
+    "ağı",
+    "aya",
+    "web",
+    "site"
+  ],
+  "version": "1.0.0",
+  "homepage": "https://acikyazilimagi.com",
+  "author": "Açık Yazılım Ağı Gönüllüleri",
+  "contributors": [
+    {
+      "name": "Eser Ozvataf",
+      "email": "eser@acikyazilim.com",
+      "url": "https://eser.live/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acikyazilimagi/acikyazilimagi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acikyazilimagi/acikyazilimagi/issues"
+  },
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -16,7 +42,6 @@
   },
   "devDependencies": {
     "@astrojs/mdx": "^2.0.3",
-    "@astrojs/rss": "^4.0.1",
     "@astrojs/sitemap": "^3.0.4",
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/tailwind": "^5.1.0",
@@ -26,6 +51,8 @@
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20.10.6",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "astro": "^4.0.8",
     "astro-icon": "^0.8.2",
     "commitizen": "^4.3.0",
@@ -36,10 +63,11 @@
     "mdx": "^0.2.3",
     "remark-code-titles": "^0.1.2",
     "svelte": "^4.2.8",
-    "tailwindcss": "^3.4.0",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@astrojs/check": "^0.3.4",
     "@astrojs/markdoc": "^0.8.2",
     "@libsql/client": "0.4.0-pre.5"
   },

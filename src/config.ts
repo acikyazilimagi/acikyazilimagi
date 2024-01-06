@@ -5,12 +5,20 @@ export const NAV_ITEMS: NavItems = {
 		path: "/",
 		title: "Giriş",
 	},
+	processes: {
+		path: "/processes",
+		title: "Nasıl Çalışıyoruz?",
+	},
+	projects: {
+		path: "/projects",
+		title: "Projelerimiz",
+	},
 	blog: {
 		path: "/blog",
 		title: "Yazılar",
 	},
-	media: {
-		path: "/media",
+	press: {
+		path: "/press",
 		title: "Basında Biz",
 	},
 	about: {

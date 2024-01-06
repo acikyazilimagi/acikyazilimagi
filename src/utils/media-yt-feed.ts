@@ -1,5 +1,3 @@
-import type { MediaExternallyHostedVideo } from "./media";
-
 export type Feed2JsonYtFeedItem = {
 	guid: `yt:video:${string}`;
 	url: string;
@@ -16,7 +14,7 @@ export function toFeedToJsonUrl(ytVideoChannelId: string) {
 
 export function toMediaFormatFromFeed2JsonUrl(posts: {
 	items: Array<Feed2JsonYtFeedItem>;
-}): Array<MediaExternallyHostedVideo> {
+}): Array<Record<string, unknown>> {
 	return posts?.items?.length
 		? posts.items.map((post) => ({
 				title: post.title,

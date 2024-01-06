@@ -4,7 +4,7 @@ import { tweetEmbed } from "./schema/tweet-embed.mdoc";
 import { tabs } from "./schema/tabs.mdoc";
 import { ytEmbed } from "./schema/yt-embed.mdoc";
 
-/** @type {import('@markdoc/markdoc').Config} */
+// ** @type {import('@markdoc/markdoc').Config} */
 export const config = {
 	tags: {
 		callout,
@@ -15,12 +15,13 @@ export const config = {
 	},
 	functions: {
 		getCountryEmoji: {
-			transform(parameters) {
-				const [country] = Object.values(parameters);
-				const countryToEmojiMap = {
+			transform(parameters: ArrayLike<string>) {
+				const [country] = Object.values<string>(parameters);
+				const countryToEmojiMap: Record<string, string> = {
 					turkey: "🇹🇷",
 				};
-				return countryToEmojiMap[country as string] ?? "🏳";
+
+				return countryToEmojiMap[country] ?? "🏳";
 			},
 		},
 	},

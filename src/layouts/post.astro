@@ -2,10 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 import Icon from 'astro-icon';
 import { SITE, USE_POST_IMG_OVERLAY, USE_AUTHOR_CARD, USE_SUBSCRIPTION } from '$/config'
-import MainLayout from '$/components/MainLayout.astro'
-import BaseHead from '$/components/BaseHead.astro'
-import Prose from '$/components/Prose.astro'
-import EditUrl from '$/components/EditLink.astro'
+import MainLayout from '$/components/main-layout.astro'
+import BaseHead from '$/components/base-head.astro'
+import Prose from '$/components/prose.astro'
+import EditLink from '$/components/edit-link.astro'
 
 
 interface Props {
@@ -32,9 +32,6 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
     </head>
     <MainLayout>
         <div class="post__header">
-            <div class="post__tags">
-                { content.tags !== undefined && content.tags.length > 0 && content.tags.map(tag => <a class="post__tag" href={`/tags/${tag}`} title={tag}>{tag}</a>) }
-            </div>
             <h1 class="post__title">{ content.title }</h1>
             <h5 class={`post__desc ${AUTHOR_AVATAR ? 'flex flex-row gap-2' : ''}`}>
                 { AUTHOR_AVATAR ? <img class="avatar" src={AUTHOR_AVATAR} alt={`${ AUTHOR_NAME } profil resmi`} /> : ''}
@@ -67,6 +64,14 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
         <Prose>
             <slot />
         </Prose>
+        <div class="post__tags">
+            { content.tags !== undefined && content.tags.length > 0 && (
+              <div>
+                <span>Etiketler:</span>
+                {content.tags.map(tag => <a class="post__tag" href={`/blog/tags/${tag}`} title={tag}>{tag}</a>)}
+              </div>
+            )}
+        </div>
         <div class="post__footer">
             { USE_AUTHOR_CARD &&
                 <br/>
@@ -95,8 +100,8 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
                 <br/>
             }
             {
-                meta?.collection && meta?.id && 
-                    <EditUrl label=" GitHub'da revize et" editUrl={`${SITE.githubUrl}/tree/main/src/content/${meta?.collection}/${meta?.id}`}/>
+                meta?.collection && meta?.id &&
+                    <EditLink label="Bu içeriği GitHub'da revize et" editUrl={`${SITE.githubUrl}/tree/main/src/content/${meta?.collection}/${meta?.id}`}/>
             }
         </div>
     </MainLayout>
@@ -109,7 +114,7 @@ const AUTHOR_AVATAR = content.authorImage ? content.authorImage : SITE?.authorIm
         @apply text-5xl font-extrabold text-theme-primary dark:text-theme-dark-primary
     }
     .post__desc {
-        @apply text-slate-500 dark:text-slate-100 flex justify-center text-left md:flex-none md:justify-start
+        @apply text-slate-500 dark:text-slate-100 flex justify-center text-left md:flex-none md:justify-start mt-4
     }
     .post__author {
         @apply no-underline dark:text-white hover:text-theme-primary

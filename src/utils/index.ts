@@ -1,4 +1,3 @@
-import path from "path";
 const MONTHS = [
   "Oca",
   "Şub",
@@ -14,12 +13,18 @@ const MONTHS = [
   "Ara",
 ];
 
-export const toTitleCase = (str: string) =>
-  str.replace(/\w\S*/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-
 export const getMonthName = (date: Date) => MONTHS[new Date(date).getMonth()];
 
-export const getSlugFromPathname = (pathname: string) =>
-  path.basename(pathname, path.extname(pathname));
+export const getSlugFromPathname = (pathname: string) => {
+  // URL nesnesini kullanarak pathname'i ayrıştır
+  // const url = new URL(`file://${urlString}`);
+  // const pathname = url.pathname;
+
+  // Son '/' karakterinden sonra gelen kısmı al (dosya adı)
+  const filename = pathname.substring(pathname.lastIndexOf('/') + 1);
+
+  // Dosya adından dosya uzantısını çıkar
+  const slug = filename.split('.').slice(0, -1).join('.');
+
+  return slug;
+};
