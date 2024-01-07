@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ProjectPreview from "./project-preview.astro";
+
+interface Props {
+  projects: CollectionEntry<"project">;
+  heading?: string;
+  mode?: "row" | "col";
+}
+
+const { projects, heading, mode = "col" } = Astro.props;
+const sortedProjects = projects.sort(
+  (a, b) => new Date(a.data.date) - new Date(b.data.date),
+);
+---
+
+{
+  heading ? (
+    <h5 class={`project-preview__heading project-preview__heading--${mode} ink-h`}>
+      {heading}
+    </h5>
+  ) : (
+    ""
+  )
+}
+<section class={`project-preview__list project-preview__list--${mode}`}>
+  {
+    sortedProjects.map((project) => (
+      <ProjectPreview project={project} asCard={mode === "row" ? true : false} />
+    ))
+  }
+</section>
+<style>
+  .project-preview__heading {
+    @apply pl-0 sm:pl-6;
+  }
+  .project-preview__heading--row {
+    @apply pl-0;
+  }
+  .project-preview__list {
+    @apply flex flex-col gap-12;
+  }
+  .project-preview__list--row {
+    @apply flex-row flex-wrap md:px-6 lg:px-0 gap-12 md:gap-8 sm:gap-10 lg:gap-12;
+  }
+  .project-preview__list--col {
+    @apply flex-col gap-12;
+  }
+</style>
