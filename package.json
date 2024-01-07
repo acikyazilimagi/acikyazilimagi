@@ -1,0 +1,72 @@
+{
+  "name": "acikyazilimagi",
+  "private": true,
+  "packageManager": "npm@10.2.5",
+  "description": "Açık Yazılım Ağı web sitesi",
+  "keywords": [
+    "açık",
+    "yazılım",
+    "ağı",
+    "aya",
+    "web",
+    "site"
+  ],
+  "version": "1.0.0",
+  "homepage": "https://acikyazilimagi.com",
+  "author": "Açık Yazılım Ağı Gönüllüleri",
+  "contributors": [
+    {
+      "name": "Eser Ozvataf",
+      "email": "eser@acikyazilim.com",
+      "url": "https://eser.live/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acikyazilimagi/acikyazilimagi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/acikyazilimagi/acikyazilimagi/issues"
+  },
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "postbuild": "node ./scripts/search/prepare-index.js",
+    "check:type": "tsc --project tsconfig.json --pretty --noEmit",
+    "lint": "biome lint src",
+    "format": "biome format src --write"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.3.4",
+    "@astrojs/markdoc": "^0.8.2",
+    "@astrojs/mdx": "^2.0.3",
+    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/svelte": "^5.0.3",
+    "@astrojs/tailwind": "^5.1.0",
+    "@biomejs/biome": "1.4.1",
+    "@fontsource/fira-sans": "^5.0.18",
+    "@iconify-json/mdi": "^1.1.64",
+    "@libsql/client": "0.4.0-pre.7",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20.10.7",
+    "@types/react-dom": "^18.2.18",
+    "@types/react": "^18.2.46",
+    "astro-icon": "^1.0.2",
+    "astro": "^4.1.1",
+    "globby": "^14.0.0",
+    "gray-matter": "^4.0.3",
+    "lunr": "^2.3.9",
+    "remark-code-titles": "^0.1.2",
+    "svelte": "^4.2.8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+  }
+}

@@ -1,0 +1,82 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+import ArticlePreviewList from "$/components/article-preview-list.astro";
+import Prose from "$/components/prose.astro";
+
+const title = "Giriş";
+const description =
+  "Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı";
+
+const articles = await getCollection("articles");
+---
+
+<DefaultPageLayout content={{ title, description }} showPageHeader={false}>
+  <div class="hero">
+    <div class="hero__face">
+      <div class="logo-section">
+        <img src="/assets/logo.svg" alt="aya, açık yazılım ağı" />
+      </div>
+    </div>
+    <div class="hero__says">
+      <Prose>
+        <strong>Açık Yazılım Ağı</strong> (AYA), sosyal bir yarar oluşturmak motivasyonuyla
+        nitelikli bilişim çözümleri üreten gönüllülerin bir araya gelmesine ve projeler
+        gerçekleştirmesine imkan sağlayan bir platformdur.<br />
+        <br />
+        Bugüne kadar projelere yetkin ve uzman gönüllü desteği ve teknik kaynaklar
+        sunarak kolektif bir şekilde gerçeklenmelerini sağladık. Bu projeler resmi
+        kurumlar ve sivil toplum kuruluşları başta olmak üzere herkesin kullanımına
+        ve denetimine açık, açık kaynak lisanslarına sahip bilişim çözümleri oldular.
+        Bizim buradaki rolümüz hem gönüllülerin aralarındaki iletişime aracı olmak
+        hem de kaynak yönetiminde koordinasyon sağlamak oldu.<br />
+        <br />
+        Sosyal yarar gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün yoluna
+        portföyünde bilişim projeleri barındıran
+        <a href="/articles/20240107-vakif-kimligimiz-ve-sinirlarimiz"
+          >yazılım vakfı kimliğiyle</a
+        >
+        devam ediyor.
+      </Prose>
+      <p align="right">
+        <a class="action__go-to-article ink-h" href="/about" title="Hakkımızda"
+          >Yazının Devamı &rarr;</a
+        >
+      </p>
+    </div>
+  </div>
+  <hr />
+  <ArticlePreviewList articles={articles.slice(0, 3)} heading="son yazılar" />
+  <div class="page__actions">
+    <a class="action__go-to-article ink-h" href="/articles" title="Tüm Yazılar"
+      >Tüm Yazılar &rarr;</a
+    >
+  </div>
+</DefaultPageLayout>
+
+<style>
+  .hero {
+    @apply flex flex-col md:flex-row gap-8 w-full transition-all pb-10;
+  }
+  .hero__face {
+    @apply flex md:flex-none justify-center;
+  }
+  .hero__says {
+    @apply flex-1 text-center md:text-left;
+  }
+  .hero__says a {
+    @apply whitespace-nowrap;
+  }
+  .logo-section,
+  .logo-section img {
+    @apply h-48 w-48 md:h-56;
+  }
+  .page__actions {
+    @apply flex justify-center md:justify-end py-6;
+  }
+  .action__go-to-article {
+    @apply py-4 hover:underline;
+  }
+</style>

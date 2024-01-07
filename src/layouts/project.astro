@@ -1,0 +1,169 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SITE } from "$/config";
+import MainLayout from "$/components/main-layout.astro";
+import BaseHead from "$/components/base-head.astro";
+import Prose from "$/components/prose.astro";
+import EditLink from "$/components/edit-link.astro";
+
+interface Props {
+  meta?: {
+    id: string;
+    slug: string;
+    collection: string;
+  };
+  content: CollectionEntry<"project">["data"];
+  stats?: {
+    views: number;
+  };
+}
+const { content, meta } = Astro.props;
+
+const PROJECT_NAME = content.title ? content.title : "Project";
+const PROJECT_CATEGORY = content.category ? content.category : "";
+const PROJECT_DESCRIPTION = content.description ? content.description : "";
+const PROJECT_LINK = content.link ? content.link : "";
+const PROJECT_LOGO = content.logoImage ? content.logoImage : "";
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <BaseHead
+      {...content}
+      title={content.title ? `${SITE.title} | ${content.title}` : SITE.title}
+    />
+  </head>
+  <MainLayout>
+    <div class="project__header">
+      <h1 class="project__title">{content.title}</h1>
+      <h5 class="project__desc flex flex-row gap-4">
+        {
+          PROJECT_LOGO ? (
+            <div class="avatar">
+              <img
+                src={PROJECT_LOGO}
+                alt={`${PROJECT_NAME} logo`}
+              />
+            </div>
+          ) : (
+            ""
+          )
+        }
+        <div>
+          <span class="project__description">
+            {PROJECT_DESCRIPTION}
+          </span>
+          {
+            PROJECT_LINK ? (
+              <a
+                class="project__link"
+                href={PROJECT_LINK}
+                title={`${PROJECT_NAME} web adresi`}
+                target="_blank"
+                rel="external"
+              >
+                Bağlantı 🡥
+              </a>
+            ) : (
+              ""
+            )
+          }
+        </div>
+        <div class="project__category">
+          {
+            PROJECT_CATEGORY === "incubation" ? (
+              "✅ Kuluçka"
+            ) : (
+              "⚠️ Değerlendiriliyor"
+            )
+          }
+        </div>
+      </h5>
+    </div>
+    {
+      content.image ? (
+        <>
+          <img class="img__outer" src={content.image} alt={content.title} />
+          <br />
+        </>
+      ) : (
+        ""
+      )
+    }
+    <Prose>
+      <slot />
+    </Prose>
+    <div class="project__tags">
+      {
+        content.tags !== undefined && content.tags.length > 0 && (
+          <div>
+            <span>Etiketler:</span>
+            {content.tags.map((tag) => (
+              <a class="project__tag" href={`/projects/tags/${tag}`} title={tag}>
+                {tag}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="project__footer">
+      {
+        meta?.collection && meta?.id && (
+          <EditLink
+            label="Bu içeriği GitHub'da revize et"
+            editUrl={`${SITE.githubUrl}/tree/main/src/content/${meta?.collection}/${meta?.id}`}
+          />
+        )
+      }
+    </div>
+  </MainLayout>
+  <style>
+    .project__header {
+      @apply py-4 mb-1 text-left;
+    }
+    .project__title {
+      @apply text-5xl font-extrabold text-theme-primary dark:text-theme-dark-primary;
+    }
+    .project__desc {
+      @apply text-slate-900 dark:text-slate-100 flex justify-center text-left md:flex-none md:justify-start mt-4;
+    }
+    .project__description {
+      @apply text-base font-normal;
+    }
+    .project__link {
+      @apply text-slate-400;
+    }
+    .project__category {
+      @apply whitespace-nowrap;
+    }
+    .project__tags {
+      @apply inline-flex gap-2 mt-12 mb-4;
+    }
+    .project__tag {
+      @apply text-slate-400 hover:text-theme-primary dark:hover:text-theme-dark-primary;
+    }
+
+    .avatar {
+      @apply border-r-2 pr-4 w-24;
+    }
+    .avatar img {
+      @apply rounded-full p-1 border-2 border-solid border-theme-dark-primary dark:border-theme-primary;
+    }
+
+    .img__outer {
+      @apply relative rounded-lg shadow-xl overflow-hidden;
+    }
+    .img_gradient {
+      @apply absolute z-10 w-full bottom-0 left-0 h-full bg-gradient-to-tr from-theme-primary dark:from-theme-dark-primary;
+    }
+
+    .button {
+      @apply pl-4 pr-6 py-3 font-semibold text-white bg-theme-primary dark:bg-theme-dark-primary;
+    }
+    .button svg {
+      @apply mb-1;
+    }
+  </style>
+</html>

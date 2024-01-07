@@ -1,0 +1,40 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+import ArticlePreviewList from "$/components/article-preview-list.astro";
+
+export async function getStaticPaths({}) {
+  const allArticles = await getCollection("articles");
+  const allTags = new Set();
+  allArticles.map((article) => {
+    article.data.tags &&
+      article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+  });
+
+  return Array.from(allTags).map((tag) => {
+    const filteredArticles = allArticles.filter((article) =>
+      article.data.tags.includes(tag),
+    );
+    return {
+      params: { tag },
+      props: {
+        pages: filteredArticles,
+      },
+    };
+  });
+}
+
+const { pages } = Astro.props;
+const { tag } = Astro.params;
+---
+
+<DefaultPageLayout
+  content={{
+    title: `Etiketlere Göre Yazılar: ${tag}`,
+    description: `${tag} etiketi ile yayınlanmış tüm yazılar`,
+  }}
+>
+  <ArticlePreviewList articles={pages} />
+</DefaultPageLayout>

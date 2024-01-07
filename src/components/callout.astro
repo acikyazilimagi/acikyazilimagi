@@ -1,0 +1,37 @@
+---
+import { Icon } from "astro-icon/components";
+export type CalloutType = "check" | "error" | "note" | "warning";
+interface Props {
+  title: string;
+  type: CalloutType;
+}
+
+const ICON_MAP: Record<CalloutType, string> = {
+  check: "mdi:check-circle",
+  error: "mdi:close-circle",
+  note: "mdi:note",
+  warning: "mdi:warning-circle",
+};
+
+const COLOR_MAP: Record<CalloutType, string> = {
+  check: "text-green-700",
+  error: "text-red-700",
+  note: "text-slate-700",
+  warning: "text-orange-700",
+};
+
+const { title, type = "note" } = Astro.props;
+---
+
+<div
+  class="callout flex gap-2 w-full bg-slate-50 my-1 px-5 py-2 rounded-sm shadow-sm"
+>
+  <Icon
+    class={`w-8 h-8 inline-block ${COLOR_MAP[type]}`}
+    name={ICON_MAP[type]}
+  />
+  <div class="copy flex flex-col">
+    <h3 class={`title m-0 ${COLOR_MAP[type]}`}>{title}</h3>
+    <slot />
+  </div>
+</div>

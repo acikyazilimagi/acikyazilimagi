@@ -1,0 +1,30 @@
+---
+export const prerender = true;
+
+import { getEntryBySlug, getCollection } from "astro:content";
+import ProjectLayout from "$/layouts/project.astro";
+import Code from "../../components/code.astro";
+
+export async function getStaticPaths() {
+  const allProjects = await getCollection("projects");
+  return allProjects.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const entry = await getEntryBySlug("projects", slug!);
+
+const { id, collection, data } = entry;
+const { Content } = await entry.render();
+---
+
+<ProjectLayout meta={{ id, collection, slug }} content={data}>
+  <Content
+    components={{
+      code: Code,
+    }}
+  />
+</ProjectLayout>

@@ -1,0 +1,106 @@
+[
+	{
+		"title": "Yazılımcı Günleri 2023",
+		"description": "Açık Yazılım Ağı ve Afet Harita Projesi",
+		"url": "https://www.youtube.com/watch?v=mktym-FxWvg",
+		"host": "FolksDev",
+		"participants": ["Eser Özvataf"],
+		"date": "2023-08-12"
+	},
+	{
+		"title": "Kesin Yaşanmıştır",
+		"description": "Bir günde 20 bin gönüllü topladık",
+		"url": "https://www.youtube.com/watch?v=1ahIvlbVVbs",
+		"host": "Teknasyon",
+		"participants": ["Fatih Kadir Akın"],
+		"date": "2023-07-04"
+	},
+	{
+		"title": "Nevşin Mengü YouTube",
+		"description": "Seçim güvenliğinde yer almak isteyenler bu videoyu izleyin!",
+		"url": "https://www.youtube.com/watch?v=jWJqhQYy7Ow",
+		"host": "Nevşin Mengü",
+		"participants": [],
+		"date": "2023-05-26"
+	},
+	{
+		"title": "Turk-internet.com",
+		"description": "Gönüllü Gözlemci Olarak Gideceğiniz Yeri Bu Haritadan Bulun",
+		"url": "https://turk-internet.com/gonullu-gozlemci-olarak-gideceginiz-yeri-bu-haritadan-bulun/",
+		"host": "Turk-internet.com",
+		"participants": ["Füsun Sarp Nebil"],
+		"date": "2023-05-26"
+	},
+	{
+		"title": "Açık Veri Zirvesi 2023",
+		"description": "Gönüllü Gözlemci Olarak Gideceğiniz Yeri Bu Haritadan Bulun",
+		"url": "https://turk-internet.com/gonullu-gozlemci-olarak-gideceginiz-yeri-bu-haritadan-bulun/",
+		"host": "Açık Veri ve Teknoloji Derneği",
+		"participants": ["Fatih Kadir Akın"],
+		"date": "2023-05-25"
+	},
+	{
+		"title": "About Amazon",
+		"description": "Amazon has activated its disaster relief services to help organizations responding to the devastating earthquake in Türkiye and Syria.",
+		"url": "https://www.aboutamazon.eu/news/community-engagement/how-amazon-is-helping-communities-impacted-by-the-earthquake-in-turkey",
+		"host": "Amazon Team",
+		"participants": [],
+		"date": "2023-02-27"
+	},
+	{
+		"title": "Webtekno röportajımız",
+		"description": "23 Bin Gönüllü Yazılımcıdan Hayat Kurtaran Platform! Afet.org",
+		"url": "https://www.youtube.com/watch?v=2rmDUQYQc3k",
+		"host": "Webtekno",
+		"participants": ["Melihcan Örüş"],
+		"date": "2023-02-16"
+	},
+	{
+		"title": "Google Türkiye Resmi Blog Sitesi",
+		"description": "Yaşanan Deprem Felaketinin Ardından",
+		"url": "https://turkiye.googleblog.com/2023/02/yasanan-deprem-felaketinin-ardndan.html",
+		"host": "Google",
+		"participants": [],
+		"date": "2023-02-15"
+	},
+	{
+		"title": "Ekonomim",
+		"description": "Girişimci Z kuşağı tarih yazıyor",
+		"url": "https://www.ekonomim.com/kose-yazisi/girisimci-z-kusagi-tarih-yaziyor/682924",
+		"host": "Ekonomim",
+		"participants": ["D. Ferhat Demir"],
+		"date": "2023-02-15"
+	},
+	{
+		"title": "Milliyet",
+		"description": "Yazılım ordusu seferber oldu!",
+		"url": "https://www.milliyet.com.tr/yazarlar/hanife-bas/yazilim-ordusu-seferber-oldu-6902301",
+		"host": "Milliyet",
+		"participants": ["Hanife Baş"],
+		"date": "2023-02-12"
+	},
+	{
+		"title": "TIME",
+		"description": "Tech Volunteers Rush to Save Turkey’s Earthquake Survivors",
+		"url": "https://time.com/6254500/turkey-earthquake-twitter-musk-rescue/",
+		"host": "TIME",
+		"participants": ["Vera Bergengruen"],
+		"date": "2023-02-11"
+	},
+	{
+		"title": "Euronews",
+		"description": "Turkey-Syria earthquakes: How Twitter has helped find survivors trapped beneath the rubble",
+		"url": "https://www.euronews.com/next/2023/02/10/how-twitter-helped-find-survivors-trapped-beneath-rubble-after-turkeys-earthquakes",
+		"host": "Euronews",
+		"participants": ["Aylin Elci"],
+		"date": "2023-02-10"
+	},
+	{
+		"title": "WIRED",
+		"description": "Tech Volunteers Rush to Save Turkey’s Earthquake Survivors",
+		"url": "https://www.wired.com/story/tech-volunteers-rush-to-save-turkeys-earthquake-survivors/",
+		"host": "WIRED",
+		"participants": ["Robyn Huang"],
+		"date": "2023-02-08"
+	}
+]
