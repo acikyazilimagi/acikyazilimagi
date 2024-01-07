@@ -8,10 +8,16 @@ on:
       - main
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+    inputs:
+      # create_release:
+      #   required: false
+      #   type: boolean
 
-# Allow this job to clone the repo and create a page deployment
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
-  actions: read
   contents: read
   pages: write
   id-token: write
@@ -38,4 +44,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v3

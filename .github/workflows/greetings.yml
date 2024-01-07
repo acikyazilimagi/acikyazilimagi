@@ -1,0 +1,15 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "<h3>Merhaba 👋 Katkıda bulunduğun için teşekkürler. Konuyla ilgililer en yakın zamanda yazılı geri dönüşlerini yapacaklardır.</h3>"
+          pr-message: "<h3>Çok teşekkürler 🎉 Şimdi ilgililer katkını değerlendirirken bir kahve içme zamanı ☕, gelebilecek geri dönüşlerin yapılan çalışmayı en iyi haline getirmek ve birlikte öğrenmek için yapıldığını unutmayalım. Tekrardan emeklerine sağlık!</h3>"
+          footer: "Bu esnada açık yazılım ağı'nın <a href=\"https://discord.com/servers/aya-i-acik-yazilim-agi-1072074800622739476\">Discord Sunucusu</a>nda biraz laflayalım mı?"
