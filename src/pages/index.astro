@@ -3,14 +3,14 @@ export const prerender = true;
 
 import { getCollection } from "astro:content";
 import DefaultPageLayout from "$/layouts/default.astro";
-import PostPreviewList from "$/components/post-preview-list.astro";
+import ArticlePreviewList from "$/components/article-preview-list.astro";
 import Prose from "$/components/prose.astro";
 
 const title = "Giriş";
 const description =
   "Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı";
 
-const posts = await getCollection("blog");
+const articles = await getCollection("articles");
 ---
 
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
@@ -34,20 +34,20 @@ const posts = await getCollection("blog");
         <br />
         Sosyal yarar gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün
         yoluna portföyünde bilişim projeleri barındıran
-        <a href="/blog/20240107-vakif-kimligimiz-ve-sinirlarimiz">yazılım vakfı kimliğiyle</a>
+        <a href="/articles/20240107-vakif-kimligimiz-ve-sinirlarimiz">yazılım vakfı kimliğiyle</a>
         devam ediyor.
       </Prose>
       <p align="right">
-        <a class="action__go-to-blog ink-h" href="/about" title="Hakkımızda"
+        <a class="action__go-to-article ink-h" href="/about" title="Hakkımızda"
           >Yazının Devamı &rarr;</a
         >
       </p>
     </div>
   </div>
   <hr />
-  <PostPreviewList posts={posts.slice(0, 3)} heading="son yazılar" />
+  <ArticlePreviewList articles={articles.slice(0, 3)} heading="son yazılar" />
   <div class="page__actions">
-    <a class="action__go-to-blog ink-h" href="/blog" title="Tüm Yazılar"
+    <a class="action__go-to-article ink-h" href="/articles" title="Tüm Yazılar"
       >Tüm Yazılar &rarr;</a
     >
   </div>
@@ -73,7 +73,7 @@ const posts = await getCollection("blog");
   .page__actions {
     @apply flex justify-center md:justify-end py-6;
   }
-  .action__go-to-blog {
+  .action__go-to-article {
     @apply py-4 hover:underline;
   }
 </style>

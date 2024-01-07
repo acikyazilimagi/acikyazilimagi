@@ -2,29 +2,29 @@
 export const prerender = true;
 
 import { getEntryBySlug, getCollection } from "astro:content";
-import PostLayout from "$/layouts/post.astro";
+import ArticleLayout from "$/layouts/article.astro";
 import Code from "../../components/code.astro";
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog");
-  return allPosts.map((post) => ({
+  const allArticles = await getCollection("articles");
+  return allArticles.map((article) => ({
     params: {
-      slug: post.slug,
+      slug: article.slug,
     },
   }));
 }
 
 const { slug } = Astro.params;
-const entry = await getEntryBySlug("blog", slug!);
+const entry = await getEntryBySlug("articles", slug!);
 
 const { id, collection, data } = entry;
 const { Content } = await entry.render();
 ---
 
-<PostLayout meta={{ id, collection, slug }} content={data}>
+<ArticleLayout meta={{ id, collection, slug }} content={data}>
   <Content
     components={{
       code: Code,
     }}
   />
-</PostLayout>
+</ArticleLayout>

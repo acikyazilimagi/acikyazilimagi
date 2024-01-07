@@ -1,0 +1,30 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+import ProjectPreviewList from "$/components/project-preview-list.astro";
+import Paginator from "$/components/paginator.astro";
+import { PAGE_SIZE } from "$/config";
+
+let title = "Projeler";
+let description = "Portföyümüzdeki projelerimiz...";
+
+export async function getStaticPaths({ paginate }) {
+  const allProjects = await getCollection("projects");
+  const sortedProjects = allProjects.sort(
+    (a, b) => new Date(a.data.date) - new Date(b.data.date),
+  );
+
+  return paginate(sortedProjects, {
+    pageSize: PAGE_SIZE,
+  });
+}
+
+const { page } = Astro.props;
+---
+
+<DefaultPageLayout content={{ title, description }}>
+  <ProjectPreviewList projects={page.data} />
+  <Paginator page={page} />
+</DefaultPageLayout>
