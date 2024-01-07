@@ -3,24 +3,24 @@ export const prerender = true;
 
 import { getCollection } from "astro:content";
 import DefaultPageLayout from "$/layouts/default.astro";
-import PostPreviewList from "$/components/post-preview-list.astro";
+import ArticlePreviewList from "$/components/article-preview-list.astro";
 
 export async function getStaticPaths({}) {
-  const allPosts = await getCollection("blog");
+  const allArticles = await getCollection("articles");
   const allTags = new Set();
-  allPosts.map((post) => {
-    post.data.tags &&
-      post.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+  allArticles.map((article) => {
+    article.data.tags &&
+      article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
   });
 
   return Array.from(allTags).map((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.data.tags.includes(tag),
+    const filteredArticles = allArticles.filter((article) =>
+      article.data.tags.includes(tag),
     );
     return {
       params: { tag },
       props: {
-        pages: filteredPosts,
+        pages: filteredArticles,
       },
     };
   });
@@ -36,5 +36,5 @@ const { tag } = Astro.params;
     description: `${tag} etiketi ile yayınlanmış tüm yazılar`,
   }}
 >
-  <PostPreviewList posts={pages} />
+  <ArticlePreviewList articles={pages} />
 </DefaultPageLayout>

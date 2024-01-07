@@ -1,10 +1,10 @@
 ---
 import MediaPreview from "./media-preview.astro";
-const { posts } = Astro.props;
+const { articles } = Astro.props;
 ---
 
 <section class="media-preview__list">
-  {posts.map((post) => <MediaPreview post={post} />)}
+  {articles.map((article) => <MediaPreview article={article} />)}
 </section>
 <style>
   .media-preview__list {

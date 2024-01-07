@@ -8,11 +8,11 @@ import {
   toFeedToJsonUrl,
   toMediaFormatFromFeed2JsonUrl,
 } from "../utils/media-yt-feed";
-import mediaData from "$/data/astro-media.json" with { type: "json" };
+import pressData from "$/data/press.json" with { type: "json" };
 
-async function getAllPosts() {
+async function getAllArticles() {
   if (!SITE.ytChannelId) {
-    return mediaData;
+    return pressData;
   }
 
   const url = toFeedToJsonUrl(SITE.ytChannelId);
@@ -34,12 +34,12 @@ async function getAllPosts() {
 let title = "Basında Biz";
 let description = "Basında yer alan video ve haberler";
 
-const allPosts = await getAllPosts();
-const sortedPosts = allPosts.sort(
+const allArticles = await getAllArticles();
+const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.date) - new Date(a.date),
 );
 ---
 
 <DefaultPageLayout content={{ title, description }}>
-  <MediaPreviewList posts={sortedPosts} />
+  <MediaPreviewList articles={sortedArticles} />
 </DefaultPageLayout>

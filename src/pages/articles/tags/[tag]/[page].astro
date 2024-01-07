@@ -4,25 +4,25 @@ import type { InferGetStaticParamsType, InferGetStaticPropsType } from "astro";
 import { getCollection } from "astro:content";
 import { PAGE_SIZE } from "$/config";
 import DefaultPageLayout from "$/layouts/default.astro";
-import PostPreviewList from "$/components/post-preview-list.astro";
+import ArticlePreviewList from "$/components/article-preview-list.astro";
 import Paginator from "$/components/paginator.astro";
 
 let title = "Etiketlere Göre Yazılar";
-let description = "All the articles posted so far...";
+let description = "Şu ana kadar yazılmış tüm yazılar...";
 
 export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection("blog");
+  const allArticles = await getCollection("articles");
   const allTags = new Set<string>();
-  allPosts.map((post) => {
-    post.data.tags &&
-      post.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+  allArticles.map((article) => {
+    article.data.tags &&
+      article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
   });
 
   return Array.from(allTags).flatMap((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.data.tags.includes(tag),
+    const filteredArticles = allArticles.filter((article) =>
+      article.data.tags.includes(tag),
     );
-    return paginate(filteredPosts, {
+    return paginate(filteredArticles, {
       params: { tag },
       pageSize: PAGE_SIZE,
     });
@@ -42,6 +42,6 @@ const { tag } = Astro.params as Params;
     description: `${tag} etiketi ile yayınlanmış tüm yazılar`,
   }}
 >
-  <PostPreviewList posts={page.data} />
+  <ArticlePreviewList articles={page.data} />
   <Paginator page={page} />
 </DefaultPageLayout>

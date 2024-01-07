@@ -7,12 +7,12 @@ import DefaultPageLayout from "$/layouts/default.astro";
 let title = "Etiketler";
 let description = "Şu ana kadar kullanılmış etiketler...";
 
-const allPosts = await getCollection("blog");
+const allArticles = await getCollection("articles");
 const tags = [
   ...new Set(
     [].concat.apply(
       [],
-      allPosts.map((post) => post.data.tags),
+      allArticles.map((article) => article.data.tags),
     ),
   ),
 ];
@@ -25,8 +25,8 @@ const tags = [
         <li>
           <a
             class="tag"
-            href={`/blog/tags/${tag}`}
-            title={`"${tag}" etiketi altında yazılanlar`}
+            href={`/articles/tags/${tag}`}
+            title={`"${tag}" etiketi altındaki yazılar`}
             transition:animate="slide"
           >
             {tag}

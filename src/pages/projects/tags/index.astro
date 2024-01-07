@@ -1,0 +1,47 @@
+---
+export const prerender = true;
+
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+
+let title = "Etiketler";
+let description = "Şu ana kadar kullanılmış etiketler...";
+
+const allProjects = await getCollection("projects");
+const tags = [
+  ...new Set(
+    [].concat.apply(
+      [],
+      allProjects.map((project) => project.data.tags),
+    ),
+  ),
+];
+---
+
+<DefaultPageLayout content={{ title, description }}>
+  <ul class="tag-list">
+    {
+      tags.map((tag) => (
+        <li>
+          <a
+            class="tag"
+            href={`/projects/tags/${tag}`}
+            title={`"${tag}" etiketi altındaki projeler`}
+            transition:animate="slide"
+          >
+            {tag}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</DefaultPageLayout>
+
+<style>
+  .tag-list {
+    @apply list-none flex gap-2 flex-wrap;
+  }
+  .tag {
+    @apply inline-block text-xl px-4 py-1 rounded-full text-theme-secondary bg-theme-primary dark:bg-theme-dark-primary dark:text-theme-dark-secondary;
+  }
+</style>
