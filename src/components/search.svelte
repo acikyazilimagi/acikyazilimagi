@@ -67,7 +67,7 @@
             </div>
         {/if}
     </div>
-    <div class="note"><small>pencereyi kapatmak için dışına tıklayın</small></div>
+    <div class="note"><small>pencereyi kapatmak için dışına tıklayın</small></div>
 </div>
 <style>
     .search {

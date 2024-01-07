@@ -16,27 +16,26 @@ const posts = await getCollection("blog");
 <DefaultPageLayout content={{ title, description }} showPageHeader={false}>
   <div class="hero">
     <div class="hero__face">
-      <div class="author-card">
-        <img src="/assets/logo.svg" title="Aalam" alt="aya, açık yazılım ağı" />
+      <div class="logo-section">
+        <img src="/assets/logo.svg" alt="aya, açık yazılım ağı" />
       </div>
     </div>
     <div class="hero__says">
       <Prose>
         <strong>Açık Yazılım Ağı</strong> (AYA), sosyal bir yarar oluşturmak motivasyonuyla
-        nitelikli bilişim çözümleri üretmeye çalışan gönüllülerin bir araya geldiği
-        ve projeler gerçekleştirdiği bir platformdur.<br />
+        nitelikli bilişim çözümleri üreten gönüllülerin bir araya gelmesine ve projeler
+        gerçekleştirmesine imkan sağlayan bir platformdur.<br />
         <br />
-        Bugüne kadar gönüllülerin yetkin ve uzman olduğu alanlarda çıktı sağlaması
-        için kaynaklar sağlayıp onların kolektif bir şekilde projelerini gerçekleştirmelerine
-        imkan sağladık. Bu projeler resmi kurumlar ve sivil toplum kuruluşları başta
-        olmak üzere herkesin erişimine ve denetimine açık, üzerinde bir hak sahipliği
-        bulunmayan bilişim çözümleri oldular. Bizim buradaki rolümüz hem iletişime
-        aracı olmak hem de kaynak yönetiminde koordinasyon sağlamak oldu.<br />
+        Bugüne kadar projelere yetkin ve uzman gönüllü desteği ve teknik kaynaklar sunarak
+        kolektif bir şekilde gerçeklenmelerini sağladık. Bu projeler resmi kurumlar ve sivil
+        toplum kuruluşları başta olmak üzere herkesin kullanımına ve denetimine açık,
+        açık kaynak lisanslarına sahip bilişim çözümleri oldular. Bizim buradaki rolümüz hem
+        iletişime aracı olmak hem de kaynak yönetiminde koordinasyon sağlamak oldu.<br />
         <br />
-        Toplum yararı gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün
-        yoluna portföyünde bilişim projeleri barındırarak bir <em
-          >« yazılım vakfı »</em
-        > kimliğiyle devam ediyor.
+        Sosyal yarar gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün
+        yoluna portföyünde bilişim projeleri barındıran
+        <a href="/blog/20240107-vakif-kimligimiz-ve-sinirlarimiz">yazılım vakfı kimliğiyle</a>
+        devam ediyor.
       </Prose>
       <p align="right">
         <a class="action__go-to-blog ink-h" href="/about" title="Hakkımızda"
@@ -64,8 +63,11 @@ const posts = await getCollection("blog");
   .hero__says {
     @apply flex-1 text-center md:text-left;
   }
-  .author-card,
-  .author-card img {
+  .hero__says a {
+    @apply whitespace-nowrap;
+  }
+  .logo-section,
+  .logo-section img {
     @apply h-48 w-48 md:h-56;
   }
   .page__actions {

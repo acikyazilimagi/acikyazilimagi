@@ -1,23 +1,24 @@
 ---
-title: 'Hakkında'
-description: 'Açık Yazılım Ağı nedir? Neler yapar?'
+title: "Hakkında"
+description: "Açık Yazılım Ağı nedir? Neler yapar?"
 ---
-import DefaultPageLayout from '$/layouts/default.astro'
-import Prose from '$/components/prose.astro'
+import DefaultPageLayout from "$/layouts/default.astro"
+import Prose from "$/components/prose.astro"
 
 <DefaultPageLayout content={{ title: frontmatter.title, description: frontmatter.description }}>
     <Prose>
         **Açık Yazılım Ağı** (AYA), sosyal bir yarar oluşturmak motivasyonuyla nitelikli bilişim çözümleri
-        üretmeye çalışan gönüllülerin bir araya geldiği ve projeler gerçekleştirdiği bir platformdur.
+        üreten gönüllülerin bir araya gelmesine ve projeler gerçekleştirmesine imkan sağlayan bir platformdur.
 
-        Bugüne kadar gönüllülerin yetkin ve uzman olduğu alanlarda çıktı sağlaması için kaynaklar sağlayıp
-        onların kolektif bir şekilde projelerini gerçekleştirmelerine imkan sağladık. Bu projeler resmi
-        kurumlar ve sivil toplum kuruluşları başta olmak üzere herkesin erişimine ve denetimine açık,
-        üzerinde bir hak sahipliği bulunmayan bilişim çözümleri oldular. Bizim buradaki rolümüz hem
-        iletişime aracı olmak hem de kaynak yönetiminde koordinasyon sağlamak oldu.
+        Bugüne kadar projelere yetkin ve uzman gönüllü desteği ve teknik kaynaklar sunarak kolektif bir
+        şekilde gerçeklenmelerini sağladık. Bu projeler resmi kurumlar ve sivil toplum kuruluşları başta olmak
+        üzere herkesin kullanımına ve denetimine açık, açık kaynak lisanslarına sahip bilişim çözümleri
+        oldular. Bizim buradaki rolümüz hem iletişime aracı olmak hem de kaynak yönetiminde koordinasyon
+        sağlamak oldu.
 
-        Toplum yararı gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün yoluna portföyünde bilişim
-        projeleri barındırarak bir _« yazılım vakfı »_ kimliğiyle devam ediyor.
+        Sosyal yarar gözeten ve kar amacı gütmeyen bir oluşum olarak AYA, bugün yoluna portföyünde bilişim
+        projeleri barındıran [yazılım vakfı kimliğiyle](/blog/20240107-vakif-kimligimiz-ve-sinirlarimiz)
+        devam ediyor.
 
         <iframe
             class="w-full aspect-[16/9]"
@@ -44,20 +45,20 @@ import Prose from '$/components/prose.astro'
         çalışmalarının bir sonucu olarak görülebilir.
 
         Ülkemizde de geçmişte Linux Kullanıcı Derneği, Pardus vb. oluşumlar etrafında birçok açık kaynak
-        topluluğu oluşmuş, çeşitli çalışmalara öncülük etmişlerdir. Bunlardan biri olan ve 2015'de kurulan
+        topluluğu oluşmuş, çeşitli çalışmalara öncülük etmişlerdir. Bunlardan biri olan ve 2015’de kurulan
         [Açık Kaynak İnisiyatifi](https://acik.io) GitHub üzerinden insanları bir araya getirmeyi planlamış,
-        açık kaynak geliştirme alanında insanların birbiri ile iletişimde olmasını sağlamayı amaçlamıştır.
-        Açık Kaynak İnisiyatifinin yürüttüğü bu çalışmalar hem açık kaynak gönüllüsü insanların birbiri ile
+        açık kaynak geliştirme alanında insanların birbiri ile iletişimde olmasını sağlamayı amaçlamıştır.
+        Açık Kaynak İnisiyatifinin yürüttüğü bu çalışmalar hem açık kaynak gönüllüsü insanların birbiri ile
         iletişımde olması, hem de bilgi birikimi oluşturmaları konusunda bayrağı ileri taşımıştır.
 
-        Şubat 2023'te Kahramanmaraş'ta gerçekleşen ve 10 ili etkileyen deprem sonrası, Twitter üzerinde
-        koordine olan gönüllülerin oluşturduğu bir grup da buradaki bilgi birikimini kullanarak "deprem
-        yardımı için" organize olmuş; kısa sürede çalışmaları GitHub ve Discord üzerinde koordine ederek,
-        24.000'den fazla bilişim sektörü gönüllüsünü iletişimde tutan ve kaynak yönetimini üstlenen bir
+        Şubat 2023’te Kahramanmaraş’ta gerçekleşen ve 10 ili etkileyen deprem sonrası, Twitter üzerinde
+        koordine olan gönüllülerin oluşturduğu bir grup da buradaki bilgi birikimini kullanarak “deprem
+        yardımı için” organize olmuş; kısa sürede çalışmaları GitHub ve Discord üzerinde koordine ederek,
+        24.000’den fazla bilişim sektörü gönüllüsünü iletişimde tutan ve kaynak yönetimini üstlenen bir
         platform oluşturmuştur.
 
         Bir süre sonra **Açık Yazılım Ağı** olarak isimlendirdiğimiz bu oluşum, topluluk tarafından GitHub
-        üzerinde 50'ye yakın proje çıktısı oluşturulmasına imkan sağlandı; deprem sonrası hayati önem
+        üzerinde 50’ye yakın proje çıktısı oluşturulmasına imkan sağlandı; deprem sonrası hayati önem
         taşıyan sorunları çözebilecek teknolojiler sunabilmek için AFAD, AHBAP, AKUT gibi birçok resmi
         kurum ve sivil toplum kuruluşu ile irtibat noktası olduk ve bilişim desteğinin sağlanmasında aracı
         olarak hareket ettik.
@@ -66,36 +67,43 @@ import Prose from '$/components/prose.astro'
         ## Amacımız
 
         Temel çerçevede kriz ve ihtiyaç anlarında sahada olan ve toplum yararına çalışan kurumların bilişim
-        ihtiyaçlarını karşılamak için, alandaki en faydalı katkıları sağlayabilecek insanları ve teknolojik
-        kaynakları bir araya getirmeyi amaçlayarak yola çıktık.
+        ihtiyaçlarını karşılamak için bir araya geldik. Devamında, alandaki en faydalı katkıları
+        sağlayabilecek insanları ve teknolojik kaynakları bir araya getirmeyi amaçlayarak yola çıktık.
 
-        Böylece hem kaynakları verimli kullanmak, kriz anındaki kaosu en aza indirmek, hem de gönüllülerin
-        çabalarını doğru yönlendirmek için bir platform sağlayabiliyorduk. Ancak, geçmişte edindiğimiz
-        deneyim bizlere gösterdi ki; kriz anları hareket etmek için çok geç kalınmış anlar oluyor.
+        Böylece hem kaynakları verimli kullanmak, afet senaryoları gibi olası kriz anlarındaki kaosu en aza
+        indirmek, hem de gönüllülerin çabalarını doğru yönlendirmek için bir platform sağlayabiliyorduk.
+        Ancak [bu süreçte](/blog/20230217-acik-yazilim-agi-ve-6-subat) edindiğimiz deneyim bizlere gösterdi
+        ki, kriz anları hareket etmek için çok geç kalınmış anlar oluyor.
 
-        Bu nedenle revize ettiğimiz amacımız; toplum yararına bilişim çözümleri geliştirmeye yönelik
-        farkındalık oluşturmak, bu alandaki ihtiyaçların karşılanması için teknoloji ve bilişim alanındaki
-        bilgi birikimini kullanılarak çözümlerin geliştirilmesini sağlamak ve bunu sürdürülebilir kılmayı
-        amaç olarak belirledik.
+        Bu nedenle amacımızı revize ederek, geçmişte [Açık Kaynak İnisiyatifi](https://acik.io)nin
+        oluşturduğu kapsamdan devam etmeye karar verdik. Bu kapsamda AYA’nın amacı;
+
+        - Sosyal yarar oluşturacak bilişim çözümleri geliştirmeye yönelik farkındalık oluşturmak,
+        - pratik ihtiyaçların karşılanması için bilgi birikimini ve teknik kaynakları bir araya getirerek
+          bilişim çözümlerin tasarlanmasına öncü olmak,
+        - sürdürülebilir bir “açık kaynak ekosisteminin” oluşmasına ve açık kaynak projeler üretilmesine
+          katkıda bulunmak,
+        - üretilen projelerin sahalarda kullanımı ve yaygınlaşmasını sağlamak,
+
+        olarak belirledik.
 
 
-        ## Hedefimiz
+        ## Hedeflerimiz
 
-        Açık kaynak ve özgür yazılım pratiklerinin toplum yararı için kullanılmasına yönelik bir örnek
-        oluşturmak hedeflerimizin çatısını oluşturuyor.
+        Açık kaynak ve özgür yazılım pratiklerinin sosyal yarar oluşturmak için kullanılmasına yönelik
+        bir örnek teşkil etmek hedeflerimizin çatısını oluşturuyor.
 
-        Sektördeki en güncel ve geçerli pratikleri kullanarak,
-        - Gönüllüleri hayatın akışına olumlu etki edecek bilişim çözümlerini oluşturmaları için teşvik
-          ettiğimiz,
-        - Üretilen çözümlerin sahalarda kullanılmasını sağladığımız,
-        - Kolektif bir iş gücü ile kar amacı gütmeyen, toplum yararına çalışan kurumların ihtiyaçlarını
-          karşıladığımız
+        Mevcut Hedeflerimiz,
+        - Bilişim alanındaki gönüllü sayısını arttırmak,
+        - Geliştiricilerin birbirleri ile iletişimini sağlamak,
+        - Kolektif çalışma kültürünü geliştirmek,
+        - Sosyal fayda üreten bilişim çözümlerinin üretimini teşvik etmek,
+        - Toplum yararına çalışan kurumların ihtiyaçlarını karşılamak,
+        - Sektörde en güncel ve geçerli pratiklerinin üretilen bilişim çözümlerinde uygulanmasını
+          sağlamak,
+        - Yazılım sektöründe darboğaz oluştuğunda geliştiricilerin deneyim kazanmasını sağlayacak
+          projeler bulundurmak,
 
-        bir organizasyon oluşturmak çabalarımız arasında yer alıyor.
-
-        Bu kapsamda, yukarıda da bahsi geçen Mozilla, Linux Foundation, Apache Foundation, Cloud Native
-        Computing Foundation vb. yazılım vakıflarının vakıfların çalışmaları ile benzerlik gösterecek
-        şekilde AYA'yı, "Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı" olarak konumlamayı
-        hedeflemekteyiz.
+        olarak listelenebilir.
     </Prose>
 </DefaultPageLayout>
