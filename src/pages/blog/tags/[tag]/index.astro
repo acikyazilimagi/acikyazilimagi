@@ -1,32 +1,40 @@
 ---
-export const prerender = true
+export const prerender = true;
 
-import { getCollection } from 'astro:content'
-import DefaultPageLayout from '$/layouts/default.astro'
-import PostPreviewList from '$/components/post-preview-list.astro'
+import { getCollection } from "astro:content";
+import DefaultPageLayout from "$/layouts/default.astro";
+import PostPreviewList from "$/components/post-preview-list.astro";
 
-export async function getStaticPaths({ }) {
-  const allPosts = await getCollection('blog')
-  const allTags = new Set()
-  allPosts.map(post => {
-      post.data.tags && post.data.tags.map(tag => allTags.add(tag.toLowerCase()))
-  })
+export async function getStaticPaths({}) {
+  const allPosts = await getCollection("blog");
+  const allTags = new Set();
+  allPosts.map((post) => {
+    post.data.tags &&
+      post.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+  });
 
   return Array.from(allTags).map((tag) => {
-    const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag))
+    const filteredPosts = allPosts.filter((post) =>
+      post.data.tags.includes(tag),
+    );
     return {
       params: { tag },
       props: {
-          pages: filteredPosts
-      }
+        pages: filteredPosts,
+      },
     };
   });
 }
 
-const { pages } = Astro.props
-const { tag } = Astro.params
+const { pages } = Astro.props;
+const { tag } = Astro.params;
 ---
 
-<DefaultPageLayout content={{ title: `Etiketlere Göre Yazılar: ${tag}`, description: `all of the articles we have posted and linked so far under the tag: ${tag}` }}>
-    <PostPreviewList posts={pages} />
+<DefaultPageLayout
+  content={{
+    title: `Etiketlere Göre Yazılar: ${tag}`,
+    description: `${tag} etiketi ile yayınlanmış tüm yazılar`,
+  }}
+>
+  <PostPreviewList posts={pages} />
 </DefaultPageLayout>
