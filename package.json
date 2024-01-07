@@ -69,7 +69,7 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "@astrojs/markdoc": "^0.8.2",
-    "@libsql/client": "0.4.0-pre.5"
+    "@libsql/client": "0.4.0-pre.7"
   },
   "config": {
     "commitizen": {
