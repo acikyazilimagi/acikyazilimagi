@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getMonthName } from "$/utils";
+
+interface Props {
+  project: CollectionEntry<"project">;
+  asCard?: boolean;
+}
+
+const {
+  project: { data: project, slug },
+  asCard = false,
+} = Astro.props;
+---
+
+<div class={`project-preview ${asCard && "project-preview--card"}`}>
+  <div class="project-preview__category">
+    {
+      project.category === "incubation" ? (
+        <span class="project__category">✅</span>
+      ) : (
+        <span class="project__category">⚠️</span>
+      )
+    }
+  </div>
+  <div class="flex-1">
+    <h4 class="project-preview__title dark:text-theme-dark-primary">
+      <a href={`/projects/${slug}`} title={project.title}>{project.title}</a>
+    </h4>
+    <p class="project-preview__desc">
+      {project.description}
+    </p>
+  </div>
+</div>
+<style>
+  .project-preview {
+    @apply flex gap-6;
+  }
+  .project-preview--card {
+    @apply flex flex-col-reverse gap-4 sm:w-72 md:w-60 lg:w-64;
+  }
+  .project-preview__category {
+    @apply flex flex-col pt-2 text-center text-4xl md:text-6xl font-semibold text-slate-500 dark:text-slate-300;
+  }
+  .project-preview--card .project-preview__category {
+    @apply w-full;
+  }
+  .project-preview--card {
+    @apply text-left flex flex-row gap-1 text-4xl;
+  }
+  .project-preview__title {
+    @apply text-2xl font-semibold text-theme-primary dark:text-theme-dark-primary /* this doesn't works here */ hover:underline mb-2;
+  }
+  .project-preview__desc {
+    @apply text-sm sm:text-base md:text-lg leading-6 line-clamp-2 dark:text-white hyphens-auto;
+  }
+</style>

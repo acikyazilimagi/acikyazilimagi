@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ArticlePreview from "./article-preview.astro";
+
+interface Props {
+  articles: CollectionEntry<"article">;
+  heading?: string;
+  mode?: "row" | "col";
+}
+
+const { articles, heading, mode = "col" } = Astro.props;
+const sortedArticles = articles.sort(
+  (a, b) => new Date(b.data.date) - new Date(a.data.date),
+);
+---
+
+{
+  heading ? (
+    <h5 class={`article-preview__heading article-preview__heading--${mode} ink-h`}>
+      {heading}
+    </h5>
+  ) : (
+    ""
+  )
+}
+<section class={`article-preview__list article-preview__list--${mode}`}>
+  {
+    sortedArticles.map((article) => (
+      <ArticlePreview article={article} asCard={mode === "row" ? true : false} />
+    ))
+  }
+</section>
+<style>
+  .article-preview__heading {
+    @apply pl-0 sm:pl-6;
+  }
+  .article-preview__heading--row {
+    @apply pl-0;
+  }
+  .article-preview__list {
+    @apply flex flex-col gap-12;
+  }
+  .article-preview__list--row {
+    @apply flex-row flex-wrap md:px-6 lg:px-0 gap-12 md:gap-8 sm:gap-10 lg:gap-12;
+  }
+  .article-preview__list--col {
+    @apply flex-col gap-12;
+  }
+</style>

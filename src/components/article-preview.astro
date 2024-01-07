@@ -1,0 +1,72 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getMonthName } from "$/utils";
+
+interface Props {
+  article: CollectionEntry<"article">;
+  asCard?: boolean;
+}
+
+const {
+  article: { data: article, slug },
+  asCard = false,
+} = Astro.props;
+---
+
+<div class={`article-preview ${asCard && "article-preview--card"}`}>
+  <div class="article-preview__date-box">
+    <div class="article-preview__date">
+      <span class="article-preview__date__day"
+        >{new Date(article.date).getDate()}</span
+      >
+      <span class="article-preview__date__month-n-year"
+        >{
+          `${getMonthName(article.date)} ${new Date(article.date).getFullYear()}`
+        }</span
+      >
+    </div>
+  </div>
+  <div class="flex-1">
+    <h4 class="article-preview__title dark:text-theme-dark-primary">
+      <a href={`/articles/${slug}`} title={article.title}>{article.title}</a>
+    </h4>
+    <p class="article-preview__desc">
+      {article.description}
+    </p>
+  </div>
+</div>
+<style>
+  .article-preview {
+    @apply flex gap-6;
+  }
+  .article-preview--card {
+    @apply flex flex-col-reverse gap-4 sm:w-72 md:w-60 lg:w-64;
+  }
+  .article-preview__date-box {
+    @apply sm:w-20 md:w-32;
+  }
+  .article-preview--card .article-preview__date-box {
+    @apply w-full;
+  }
+  .article-preview__date {
+    @apply flex flex-col w-full text-center;
+  }
+  .article-preview--card .article-preview__date {
+    @apply text-left flex flex-row gap-1;
+  }
+  .article-preview__date__day {
+    @apply text-6xl font-semibold text-slate-500 dark:text-slate-300;
+  }
+  .article-preview--card .article-preview__date__day {
+    @apply text-4xl;
+  }
+  .article-preview__date__month-n-year {
+    @apply text-slate-400;
+  }
+  .article-preview__title {
+    @apply text-2xl font-semibold text-theme-primary dark:text-theme-dark-primary /* this doesn't works here */ hover:underline mb-2;
+  }
+  .article-preview__desc {
+    @apply text-lg leading-6 line-clamp-2 dark:text-white hyphens-auto;
+  }
+</style>

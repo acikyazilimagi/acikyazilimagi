@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte'
     import SearchIcon from './search-icon.svelte'
-    import PostSearchPreview from './post-search-preview.svelte'
+    import ArticleSearchPreview from './article-search-preview.svelte'
 
     let searchInput
     let searchableDocs
@@ -56,8 +56,8 @@
     </div>
     <div class="search__results">
         {#if searchResults.length}
-            {#each searchResults as post, i }
-                <PostSearchPreview post={post} isLast={ i === searchResults.length - 1 } />
+            {#each searchResults as article, i }
+                <ArticleSearchPreview article={article} isLast={ i === searchResults.length - 1 } />
             {/each}
         {:else}
             <div class="search__results--none">

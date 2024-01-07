@@ -1,0 +1,223 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Icon from "astro-icon";
+import { SITE } from "$/config";
+import MainLayout from "$/components/main-layout.astro";
+import BaseHead from "$/components/base-head.astro";
+import Prose from "$/components/prose.astro";
+import EditLink from "$/components/edit-link.astro";
+
+interface Props {
+  meta?: {
+    id: string;
+    slug: string;
+    collection: string;
+  };
+  content: CollectionEntry<"article">["data"];
+  stats?: {
+    views: number;
+  };
+}
+const { content, meta } = Astro.props;
+
+const AUTHOR_NAME = content.author ? content.author : "Author";
+const AUTHOR_TWITTER = content.authorTwitter ? content.authorTwitter : "";
+const AUTHOR_AVATAR = content.authorImage ? content.authorImage : "";
+const AUTHOR_BIO = content.authorBio ? content.authorBio : "";
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <BaseHead
+      {...content}
+      title={content.title ? `${SITE.title} | ${content.title}` : SITE.title}
+    />
+  </head>
+  <MainLayout>
+    <div class="article__header">
+      <h1 class="article__title">{content.title}</h1>
+      <h5 class={`article__desc ${AUTHOR_AVATAR ? "flex flex-row gap-2" : ""}`}>
+        {
+          AUTHOR_AVATAR ? (
+            <img
+              class="avatar"
+              src={AUTHOR_AVATAR}
+              alt={`${AUTHOR_NAME} profil resmi`}
+            />
+          ) : (
+            ""
+          )
+        }
+        <div class={AUTHOR_AVATAR ? "flex flex-col border-l-2 pl-2" : ""}>
+          {
+            AUTHOR_TWITTER ? (
+              <a
+                class="article__author"
+                href={`https://twitter.com/${AUTHOR_TWITTER}`}
+                title={`${AUTHOR_NAME} twitter`}
+                target="_blank"
+                rel="external"
+              >
+                {AUTHOR_NAME}
+              </a>
+            ) : (
+              <span class="article__author">{AUTHOR_NAME}</span>
+            )
+          }
+          {!AUTHOR_AVATAR ? " | " : ""}
+          <span class="article__date">
+            <!-- article creation/updation data -->
+            {
+              new Intl.DateTimeFormat("tr-TR", { dateStyle: "full" }).format(
+                new Date(content.date),
+              )
+            }
+          </span>
+        </div>
+      </h5>
+    </div>
+    {
+      content.image ? (
+        <>
+          <img class="img__outer" src={content.image} alt={content.title} />
+          <br />
+        </>
+      ) : (
+        ""
+      )
+    }
+    <Prose>
+      <slot />
+    </Prose>
+    <div class="article__tags">
+      {
+        content.tags !== undefined && content.tags.length > 0 && (
+          <div>
+            <span>Etiketler:</span>
+            {content.tags.map((tag) => (
+              <a
+                class="article__tag"
+                href={`/articles/tags/${tag}`}
+                title={tag}
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="article__footer">
+      <div class="author-card">
+        {AUTHOR_AVATAR ? (
+          <img
+            class="author-card__img avatar avatar--lg"
+            src={AUTHOR_AVATAR}
+            alt={`${AUTHOR_NAME} profile resmi`}
+          />
+        ) : (
+          ""
+        )}
+        <div class="author-card__meta">
+          {AUTHOR_TWITTER ? (
+            <a
+              class="author-card__author"
+              href={`https://twitter.com/${AUTHOR_TWITTER}`}
+              title={`${AUTHOR_NAME} twitter`}
+              target="_blank"
+              rel="external"
+            >
+              {AUTHOR_NAME}
+            </a>
+          ) : (
+            <span class="author-card__author">{AUTHOR_NAME}</span>
+          )}
+          <p class="author-card__bio">{AUTHOR_BIO}</p>
+          <br />
+          <a
+            class="author-card__follow-btn button"
+            target="_blank"
+            href={`https://twitter.com/intent/follow?screen_name=${AUTHOR_TWITTER}`}
+          >
+            <Icon
+              class="w-5 h-5 inline-block"
+              pack="mdi"
+              name="twitter"
+            />{" "}
+            Twitter'da takip et
+          </a>
+        </div>
+      </div>
+      {
+        meta?.collection && meta?.id && (
+          <EditLink
+            label="Bu içeriği GitHub'da revize et"
+            editUrl={`${SITE.githubUrl}/tree/main/src/content/${meta?.collection}/${meta?.id}`}
+          />
+        )
+      }
+    </div>
+  </MainLayout>
+  <style>
+    .article__header {
+      @apply py-4 mb-1 text-center md:text-left;
+    }
+    .article__title {
+      @apply text-5xl font-extrabold text-theme-primary dark:text-theme-dark-primary;
+    }
+    .article__desc {
+      @apply text-slate-500 dark:text-slate-100 flex justify-center text-left md:flex-none md:justify-start mt-4;
+    }
+    .article__subtitle {
+      @apply no-underline dark:text-white hover:text-theme-primary;
+    }
+    .article__date,
+    .article__stats {
+      @apply text-slate-400;
+    }
+    .article__tags {
+      @apply inline-flex gap-2 mt-12;
+    }
+    .article__tag {
+      @apply text-slate-400 hover:text-theme-primary dark:hover:text-theme-dark-primary;
+    }
+
+    .avatar {
+      @apply w-12 h-12 rounded-full object-cover p-1 border-2 border-solid border-theme-dark-primary dark:border-theme-primary;
+    }
+    .avatar--lg {
+      @apply w-32 h-32;
+    }
+
+    .img__outer {
+      @apply relative rounded-lg shadow-xl overflow-hidden;
+    }
+    .img_gradient {
+      @apply absolute z-10 w-full bottom-0 left-0 h-full bg-gradient-to-tr from-theme-primary dark:from-theme-dark-primary;
+    }
+
+    .author-card {
+      @apply text-slate-500 dark:text-slate-100 flex flex-row my-6 gap-4 justify-start text-left;
+    }
+    .author-card__meta {
+      @apply border-l pl-4;
+    }
+    .author-card__author {
+      @apply text-2xl mb-1;
+    }
+    .author-card__bio {
+      @apply text-slate-400;
+    }
+
+    .button {
+      @apply pl-4 pr-6 py-3 font-semibold text-white bg-theme-primary dark:bg-theme-dark-primary;
+    }
+    .button svg {
+      @apply mb-1;
+    }
+    .author-card__follow-btn {
+      @apply rounded-md transition-all;
+    }
+  </style>
+</html>
