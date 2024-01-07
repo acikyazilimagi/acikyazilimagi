@@ -7,11 +7,11 @@ export const NAV_ITEMS: NavItems = {
 	},
 	processes: {
 		path: "/processes",
-		title: "Nasıl Çalışıyoruz?",
+		title: "İşleyiş",
 	},
 	projects: {
 		path: "/projects",
-		title: "Projelerimiz",
+		title: "Projeler",
 	},
 	articles: {
 		path: "/articles",
