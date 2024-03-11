@@ -48,7 +48,7 @@
     "@astrojs/svelte": "^5.0.3",
     "@astrojs/tailwind": "^5.1.0",
     "@biomejs/biome": "1.4.1",
-    "@fontsource/fira-sans": "^5.0.18",
+    "@fontsource/fira-sans": "^5.0.19",
     "@iconify-json/mdi": "^1.1.64",
     "@libsql/client": "0.4.0-pre.7",
     "@tailwindcss/aspect-ratio": "^0.4.2",
