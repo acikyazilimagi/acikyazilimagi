@@ -45,7 +45,7 @@
     "@astrojs/markdoc": "^0.8.2",
     "@astrojs/mdx": "^2.0.3",
     "@astrojs/sitemap": "^3.1.1",
-    "@astrojs/svelte": "^5.0.3",
+    "@astrojs/svelte": "^5.2.0",
     "@astrojs/tailwind": "^5.1.0",
     "@biomejs/biome": "1.4.1",
     "@fontsource/fira-sans": "^5.0.19",
