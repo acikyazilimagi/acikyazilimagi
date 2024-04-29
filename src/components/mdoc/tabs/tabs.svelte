@@ -1,5 +1,5 @@
 <script context="module">
-	export const TABS = {};
+export const TABS = {};
 </script>
 
 <script>

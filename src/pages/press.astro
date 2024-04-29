@@ -5,26 +5,26 @@ import DefaultPageLayout from "$/layouts/default.astro";
 import MediaPreviewList from "$/components/media-preview-list.astro";
 import { SITE } from "../config";
 import {
-  toFeedToJsonUrl,
-  toMediaFormatFromFeed2JsonUrl,
+	toFeedToJsonUrl,
+	toMediaFormatFromFeed2JsonUrl,
 } from "../utils/media-yt-feed";
 import pressData from "$/data/press.json" with { type: "json" };
 
 async function getAllArticles() {
-  if (!SITE.ytChannelId) {
-    return pressData;
-  }
+	if (!SITE.ytChannelId) {
+		return pressData;
+	}
 
-  const url = toFeedToJsonUrl(SITE.ytChannelId);
-  const response = await fetch(url, {
-    headers: {
-      Accept: "application/vnd.github.v3.raw",
-    },
-  });
+	const url = toFeedToJsonUrl(SITE.ytChannelId);
+	const response = await fetch(url, {
+		headers: {
+			Accept: "application/vnd.github.v3.raw",
+		},
+	});
 
-  const data = await response.json();
+	const data = await response.json();
 
-  return toMediaFormatFromFeed2JsonUrl(data);
+	return toMediaFormatFromFeed2JsonUrl(data);
 }
 
 /* Astro Ink's Media settings */
@@ -36,7 +36,7 @@ let description = "Basında yer alan video ve haberler";
 
 const allArticles = await getAllArticles();
 const sortedArticles = allArticles.sort(
-  (a, b) => new Date(b.date) - new Date(a.date),
+	(a, b) => new Date(b.date) - new Date(a.date),
 );
 ---
 

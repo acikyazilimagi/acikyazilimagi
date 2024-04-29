@@ -6,24 +6,24 @@ import DefaultPageLayout from "$/layouts/default.astro";
 import ArticlePreviewList from "$/components/article-preview-list.astro";
 
 export async function getStaticPaths({}) {
-  const allArticles = await getCollection("articles");
-  const allTags = new Set();
-  allArticles.map((article) => {
-    article.data.tags &&
-      article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
-  });
+	const allArticles = await getCollection("articles");
+	const allTags = new Set();
+	allArticles.map((article) => {
+		article.data.tags &&
+			article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+	});
 
-  return Array.from(allTags).map((tag) => {
-    const filteredArticles = allArticles.filter((article) =>
-      article.data.tags.includes(tag),
-    );
-    return {
-      params: { tag },
-      props: {
-        pages: filteredArticles,
-      },
-    };
-  });
+	return Array.from(allTags).map((tag) => {
+		const filteredArticles = allArticles.filter((article) =>
+			article.data.tags.includes(tag),
+		);
+		return {
+			params: { tag },
+			props: {
+				pages: filteredArticles,
+			},
+		};
+	});
 }
 
 const { pages } = Astro.props;

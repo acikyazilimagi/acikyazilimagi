@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Tabs, TabList, TabPanel, Tab, type TabItem } from './tabs';
-    export let tabs: TabItem[] = []
+import { Tabs, TabList, TabPanel, Tab, type TabItem } from "./tabs";
+export let tabs: TabItem[] = [];
 </script>
 
 <Tabs>

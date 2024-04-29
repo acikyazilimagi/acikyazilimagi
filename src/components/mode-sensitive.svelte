@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { theme } from '../store/theme'
+import { theme } from "../store/theme";
 </script>
 {#if $theme === 'dark'}
     <slot name="dark"/>

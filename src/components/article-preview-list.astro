@@ -3,14 +3,14 @@ import type { CollectionEntry } from "astro:content";
 import ArticlePreview from "./article-preview.astro";
 
 interface Props {
-  articles: CollectionEntry<"article">;
-  heading?: string;
-  mode?: "row" | "col";
+	articles: CollectionEntry<"article">;
+	heading?: string;
+	mode?: "row" | "col";
 }
 
 const { articles, heading, mode = "col" } = Astro.props;
 const sortedArticles = articles.sort(
-  (a, b) => new Date(b.data.date) - new Date(a.data.date),
+	(a, b) => new Date(b.data.date) - new Date(a.data.date),
 );
 ---
 

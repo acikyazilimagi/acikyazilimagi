@@ -6,12 +6,12 @@ import ProjectLayout from "$/layouts/project.astro";
 import Code from "../../components/code.astro";
 
 export async function getStaticPaths() {
-  const allProjects = await getCollection("projects");
-  return allProjects.map((project) => ({
-    params: {
-      slug: project.slug,
-    },
-  }));
+	const allProjects = await getCollection("projects");
+	return allProjects.map((project) => ({
+		params: {
+			slug: project.slug,
+		},
+	}));
 }
 
 const { slug } = Astro.params;

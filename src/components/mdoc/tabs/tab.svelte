@@ -1,11 +1,11 @@
 <script>
-	import { getContext } from 'svelte';
-	import { TABS } from './tabs.svelte';
+import { getContext } from "svelte";
+import { TABS } from "./tabs.svelte";
 
-	const tab = {};
-	const { registerTab, selectTab, selectedTab } = getContext(TABS);
+const tab = {};
+const { registerTab, selectTab, selectedTab } = getContext(TABS);
 
-	registerTab(tab);
+registerTab(tab);
 </script>
 
 <style>

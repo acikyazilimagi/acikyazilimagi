@@ -27,6 +27,6 @@ export function toMediaFormatFromFeed2JsonUrl(posts: {
 					post.guid.lastIndexOf(":") + 1,
 					post.guid.length,
 				)}/0.jpg`,
-		  }))
+			}))
 		: [];
 }

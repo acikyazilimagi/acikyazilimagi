@@ -11,22 +11,22 @@ let title = "Etiketlere Göre Yazılar";
 let description = "Şu ana kadar yazılmış tüm yazılar...";
 
 export async function getStaticPaths({ paginate }) {
-  const allArticles = await getCollection("articles");
-  const allTags = new Set<string>();
-  allArticles.map((article) => {
-    article.data.tags &&
-      article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
-  });
+	const allArticles = await getCollection("articles");
+	const allTags = new Set<string>();
+	allArticles.map((article) => {
+		article.data.tags &&
+			article.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+	});
 
-  return Array.from(allTags).flatMap((tag) => {
-    const filteredArticles = allArticles.filter((article) =>
-      article.data.tags.includes(tag),
-    );
-    return paginate(filteredArticles, {
-      params: { tag },
-      pageSize: PAGE_SIZE,
-    });
-  });
+	return Array.from(allTags).flatMap((tag) => {
+		const filteredArticles = allArticles.filter((article) =>
+			article.data.tags.includes(tag),
+		);
+		return paginate(filteredArticles, {
+			params: { tag },
+			pageSize: PAGE_SIZE,
+		});
+	});
 }
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;

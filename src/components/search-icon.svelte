@@ -1,6 +1,6 @@
 <script lang="ts">
-    import SvgIcon from './svg-icon.svelte'
-    export let found:boolean = false
+import SvgIcon from "./svg-icon.svelte";
+export let found: boolean = false;
 </script>
 <SvgIcon>
     {#if found}

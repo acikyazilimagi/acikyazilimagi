@@ -11,14 +11,14 @@ let title = "Yazılar";
 let description = "Şu ana kadar yazılmış yazılar...";
 
 export async function getStaticPaths({ paginate }) {
-  const allArticles = await getCollection("articles");
-  const sortedArticles = allArticles.sort(
-    (a, b) => new Date(b.data.date) - new Date(a.data.date),
-  );
+	const allArticles = await getCollection("articles");
+	const sortedArticles = allArticles.sort(
+		(a, b) => new Date(b.data.date) - new Date(a.data.date),
+	);
 
-  return paginate(sortedArticles, {
-    pageSize: PAGE_SIZE,
-  });
+	return paginate(sortedArticles, {
+		pageSize: PAGE_SIZE,
+	});
 }
 
 const { page } = Astro.props;

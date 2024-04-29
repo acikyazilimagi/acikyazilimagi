@@ -8,15 +8,15 @@ import Prose from "$/components/prose.astro";
 import EditLink from "$/components/edit-link.astro";
 
 interface Props {
-  meta?: {
-    id: string;
-    slug: string;
-    collection: string;
-  };
-  content: CollectionEntry<"article">["data"];
-  stats?: {
-    views: number;
-  };
+	meta?: {
+		id: string;
+		slug: string;
+		collection: string;
+	};
+	content: CollectionEntry<"article">["data"];
+	stats?: {
+		views: number;
+	};
 }
 const { content, meta } = Astro.props;
 

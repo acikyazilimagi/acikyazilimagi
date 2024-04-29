@@ -6,24 +6,24 @@ import DefaultPageLayout from "$/layouts/default.astro";
 import ProjectPreviewList from "$/components/project-preview-list.astro";
 
 export async function getStaticPaths({}) {
-  const allProjects = await getCollection("projects");
-  const allTags = new Set();
-  allProjects.map((project) => {
-    project.data.tags &&
-      project.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
-  });
+	const allProjects = await getCollection("projects");
+	const allTags = new Set();
+	allProjects.map((project) => {
+		project.data.tags &&
+			project.data.tags.map((tag) => allTags.add(tag.toLowerCase()));
+	});
 
-  return Array.from(allTags).map((tag) => {
-    const filteredProjects = allProjects.filter((project) =>
-      project.data.tags.includes(tag),
-    );
-    return {
-      params: { tag },
-      props: {
-        pages: filteredProjects,
-      },
-    };
-  });
+	return Array.from(allTags).map((tag) => {
+		const filteredProjects = allProjects.filter((project) =>
+			project.data.tags.includes(tag),
+		);
+		return {
+			params: { tag },
+			props: {
+				pages: filteredProjects,
+			},
+		};
+	});
 }
 
 const { pages } = Astro.props;

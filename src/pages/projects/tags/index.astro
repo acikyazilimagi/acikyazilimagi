@@ -9,12 +9,12 @@ let description = "Şu ana kadar kullanılmış etiketler...";
 
 const allProjects = await getCollection("projects");
 const tags = [
-  ...new Set(
-    [].concat.apply(
-      [],
-      allProjects.map((project) => project.data.tags),
-    ),
-  ),
+	...new Set(
+		[].concat.apply(
+			[],
+			allProjects.map((project) => project.data.tags),
+		),
+	),
 ];
 ---
 

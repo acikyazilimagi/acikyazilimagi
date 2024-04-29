@@ -1,53 +1,53 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-    import SearchIcon from './search-icon.svelte'
-    import ArticleSearchPreview from './article-search-preview.svelte'
+import { onMount } from "svelte";
+import SearchIcon from "./search-icon.svelte";
+import ArticleSearchPreview from "./article-search-preview.svelte";
 
-    let searchInput
-    let searchableDocs
-    let searchIndex
+let searchInput;
+let searchableDocs;
+let searchIndex;
 
-    let searchQuery = ''
-    let searchResults = []
+let searchQuery = "";
+let searchResults = [];
 
-    onMount(async() => {
-        const lunr = (await import('lunr')).default
-        const resp = await fetch('/search-index.json')
-        searchableDocs = await resp.json()
-            // Initialize indexing
-        searchIndex = lunr(function(){
-            // the match key...
-            this.ref('slug')
+onMount(async () => {
+	const lunr = (await import("lunr")).default;
+	const resp = await fetch("/search-index.json");
+	searchableDocs = await resp.json();
+	// Initialize indexing
+	searchIndex = lunr(function () {
+		// the match key...
+		this.ref("slug");
 
-            // indexable properties
-            this.field('title')
-            this.field('description')
-            this.field('tags')
+		// indexable properties
+		this.field("title");
+		this.field("description");
+		this.field("tags");
 
-            // Omit, if you don't want to search on `body`
-            this.field('body')
+		// Omit, if you don't want to search on `body`
+		this.field("body");
 
-            // Index every document
-            searchableDocs.forEach(doc => {
-                this.add(doc)
-            }, this)
-        })
-        searchInput.focus()
-    })
+		// Index every document
+		searchableDocs.forEach((doc) => {
+			this.add(doc);
+		}, this);
+	});
+	searchInput.focus();
+});
 
-    $: {
-        if(searchQuery && searchQuery.length >= 3) {
-           const matches = searchIndex.search(searchQuery)
-           searchResults = []
-           matches.map(match => {
-               searchableDocs.filter(doc => {
-                    if(match.ref === doc.slug) {
-                        searchResults.push(doc)
-                    }
-               })
-           })
-        }
-    }
+$: {
+	if (searchQuery && searchQuery.length >= 3) {
+		const matches = searchIndex.search(searchQuery);
+		searchResults = [];
+		matches.map((match) => {
+			searchableDocs.filter((doc) => {
+				if (match.ref === doc.slug) {
+					searchResults.push(doc);
+				}
+			});
+		});
+	}
+}
 </script>
 <div class="search">
     <div class="search__ctrl">

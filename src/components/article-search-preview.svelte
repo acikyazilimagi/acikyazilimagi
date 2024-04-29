@@ -1,13 +1,13 @@
 <script lang="ts">
-    type Props = {
-        slug: string
-        title: string
-        description: string
-        category: string,
-        tags: Array<string>
-    }
-    export let article: Props
-    export let isLast: boolean = false
+type Props = {
+	slug: string;
+	title: string;
+	description: string;
+	category: string;
+	tags: Array<string>;
+};
+export let article: Props;
+export let isLast: boolean = false;
 </script>
 <div class="article-preview hover:bg-theme-primary">
     <div class="flex-1">

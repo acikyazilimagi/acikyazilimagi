@@ -11,14 +11,14 @@ let title = "Projeler";
 let description = "Portföyümüzdeki projelerimiz...";
 
 export async function getStaticPaths({ paginate }) {
-  const allProjects = await getCollection("projects");
-  const sortedProjects = allProjects.sort(
-    (a, b) => new Date(a.data.date) - new Date(b.data.date),
-  );
+	const allProjects = await getCollection("projects");
+	const sortedProjects = allProjects.sort(
+		(a, b) => new Date(a.data.date) - new Date(b.data.date),
+	);
 
-  return paginate(sortedProjects, {
-    pageSize: PAGE_SIZE,
-  });
+	return paginate(sortedProjects, {
+		pageSize: PAGE_SIZE,
+	});
 }
 
 const { page } = Astro.props;

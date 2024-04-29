@@ -34,8 +34,7 @@ export const SITE = {
 	description: "Gönüllü geliştirilen yazılımlarla oluşan bir yazılım vakfı",
 	url: "https://acikyazilimagi.com",
 	githubUrl: "https://github.com/acikyazilimagi/acikyazilimagi",
-	image:
-		"https://acikyazilimagi.com/assets/logo.png",
+	image: "https://acikyazilimagi.com/assets/logo.png",
 	// YT video channel Id (used in media.astro)
 	ytChannelId: "",
 };

@@ -3,14 +3,14 @@ import type { CollectionEntry } from "astro:content";
 import ProjectPreview from "./project-preview.astro";
 
 interface Props {
-  projects: CollectionEntry<"project">;
-  heading?: string;
-  mode?: "row" | "col";
+	projects: CollectionEntry<"project">;
+	heading?: string;
+	mode?: "row" | "col";
 }
 
 const { projects, heading, mode = "col" } = Astro.props;
 const sortedProjects = projects.sort(
-  (a, b) => new Date(a.data.date) - new Date(b.data.date),
+	(a, b) => new Date(a.data.date) - new Date(b.data.date),
 );
 ---
 

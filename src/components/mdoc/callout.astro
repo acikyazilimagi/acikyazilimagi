@@ -2,22 +2,22 @@
 import { Icon } from "astro-icon/components";
 export type CalloutType = "check" | "error" | "note" | "warning";
 interface Props {
-  title: string;
-  type: CalloutType;
+	title: string;
+	type: CalloutType;
 }
 
 const ICON_MAP: Record<CalloutType, string> = {
-  check: "mdi:check-circle",
-  error: "mdi:close-circle",
-  note: "mdi:note",
-  warning: "mdi:warning-circle",
+	check: "mdi:check-circle",
+	error: "mdi:close-circle",
+	note: "mdi:note",
+	warning: "mdi:warning-circle",
 };
 
 const COLOR_MAP: Record<CalloutType, string> = {
-  check: "text-green-700",
-  error: "text-red-700",
-  note: "text-slate-700",
-  warning: "text-orange-700",
+	check: "text-green-700",
+	error: "text-red-700",
+	note: "text-slate-700",
+	warning: "text-orange-700",
 };
 
 const { title, type = "note" } = Astro.props;

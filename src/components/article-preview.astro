@@ -3,13 +3,13 @@ import type { CollectionEntry } from "astro:content";
 import { getMonthName } from "$/utils";
 
 interface Props {
-  article: CollectionEntry<"article">;
-  asCard?: boolean;
+	article: CollectionEntry<"article">;
+	asCard?: boolean;
 }
 
 const {
-  article: { data: article, slug },
-  asCard = false,
+	article: { data: article, slug },
+	asCard = false,
 } = Astro.props;
 ---
 

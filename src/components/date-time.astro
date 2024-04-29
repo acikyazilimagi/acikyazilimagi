@@ -1,9 +1,9 @@
 ---
 interface Props {
-  value: Date;
-  title?: string;
-  lang?: Intl.LocalesArgument;
-  dateStyle?: "full" | "long" | "medium" | "short";
+	value: Date;
+	title?: string;
+	lang?: Intl.LocalesArgument;
+	dateStyle?: "full" | "long" | "medium" | "short";
 }
 const { value, title, lang = "tr-TR", dateStyle = "full" } = Astro.props;
 ---

@@ -2,9 +2,9 @@
 export type BadgeType = "success" | "danger" | "note" | "warning" | "tip";
 
 interface Props {
-  text: string;
-  type: BadgeType;
-  outline?: boolean;
+	text: string;
+	type: BadgeType;
+	outline?: boolean;
 }
 
 const { text, type = "note", outline = false } = Astro.props;

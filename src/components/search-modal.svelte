@@ -1,15 +1,14 @@
 <script lang="ts">
-    import { fade, fly } from 'svelte/transition'
-    import { isSearchVisible } from '../store/search'
-    import Search from './search.svelte'
+import { fade, fly } from "svelte/transition";
+import { isSearchVisible } from "../store/search";
+import Search from "./search.svelte";
 
-    const dismissModal = () => isSearchVisible.set(false)
-    const handleEsc = (event) => {
-        if (event.key === 'Escape') {
-			dismissModal()
-		}
-    }
-
+const dismissModal = () => isSearchVisible.set(false);
+const handleEsc = (event) => {
+	if (event.key === "Escape") {
+		dismissModal();
+	}
+};
 </script>
 {#if $isSearchVisible}
     <div class="modal__backdrop" role="button" tabindex="0" on:click={dismissModal} on:keydown={handleEsc} transition:fade></div>
