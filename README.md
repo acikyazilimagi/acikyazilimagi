@@ -25,9 +25,9 @@ hazır hale getirin.
 ```sh
 git clone https://github.com/acikyazilimagi/acikyazilimagi.git
 cd acikyazilimagi
-corepack up
 
-node --run check
+corepack up
+pre-commit install
 ```
 
 ### Çalışmaya Başlamak
