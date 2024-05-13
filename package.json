@@ -41,7 +41,7 @@
     "format": "biome format src --write"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.6.0",
     "@astrojs/markdoc": "^0.11.0",
     "@astrojs/mdx": "^2.3.1",
     "@astrojs/sitemap": "^3.1.4",
