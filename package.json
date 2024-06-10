@@ -47,7 +47,7 @@
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/svelte": "^5.4.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@biomejs/biome": "^1.7.1",
+    "@biomejs/biome": "^1.8.0",
     "@fontsource/fira-sans": "^5.0.20",
     "@iconify-json/mdi": "^1.1.66",
     "@libsql/client": "^0.6.0",
