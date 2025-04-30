@@ -14,8 +14,17 @@ jobs:
   welcome:
     runs-on: ubuntu-latest
     steps:
+      - name: Check if author is a bot
+        id: check-bots
+        run: |
+          if [[ "${{ github.event.sender.type }}" == "Bot" ]]; then
+            echo "This was triggered by a bot. Skipping."
+            exit 0
+          fi
+
       - uses: actions/checkout@v4
       - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+        if: success()
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           issue-message: "<h3>Merhaba 👋 Katkıda bulunduğun için teşekkürler. Konuyla ilgililer en yakın zamanda yazılı geri dönüşlerini yapacaklardır.</h3>"
