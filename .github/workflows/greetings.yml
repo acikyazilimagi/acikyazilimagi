@@ -22,7 +22,7 @@ jobs:
             exit 0
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: EddieHubCommunity/gh-action-community/src/welcome@main
         if: success()
         with:
